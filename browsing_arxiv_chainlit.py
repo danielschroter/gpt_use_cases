@@ -15,14 +15,14 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 @cl.on_chat_start
 def start():
-    llm = ChatOpenAI(temperature=0.3, streaming=True)
+    llm = ChatOpenAI(temperature=0.5, streaming=True)
 
-    tools = load_tools(["arxiv"])
+    tools = load_tools(["arxiv", "pubmed"])
 
     agent_chain = initialize_agent(
         tools=tools,
         llm=llm,
-        max_iterations=5,
+        max_iterations=10,
         agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         verbose=True,
         handle_parsing_errors=True

@@ -12,7 +12,7 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 llm = ChatOpenAI(temperature=0.3)
 
-tools = load_tools(["arxiv"])
+tools = load_tools(["arxiv", "pubmed"])
 
 agent_chain = initialize_agent(
     tools=tools,
